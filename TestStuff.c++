@@ -76,7 +76,7 @@ TEST(OtherTestCase, SampleTestFail) {
  * to set up the tests.
  * This is when Test Fixtures come to the rescue.
  * 
- * Text Fixtures are classes that extend the ::testing::Test class
+ * Text Fixtures are classes that extend the testing::Test class
  * defined in gtest/gtest.h.
  * They allow us to do a lot of the set up here.
  * We can create the set up once, and reuse it in all of our tests.
@@ -259,9 +259,9 @@ class TypeTest : public testing::Test {
 
 /*
  * Next, we need to get our types together.
- * gtest has defined a templated Types class we can make use of.
+ * Gtest has defined a templated Types class we can make use of.
  *
- * create a quick typedef, using ::testing::Types and put all the types you
+ * Create a quick typedef, using testing::Types and put all the types you
  * need to test in the template, then give this templated type a name.
  */
 typedef testing::Types<int, char> MyTypes;
@@ -278,8 +278,7 @@ TYPED_TEST_CASE(TypeTest, MyTypes);
  * and give it a name.
  *
  * Unlike earlier, we need to use the keyword 'this' to get at the members
- * of our fixture. It's a bit of a hassle, but there are limitations on
- * what C++ macros and templates can do.
+ * of our fixture.
  */
 TYPED_TEST(TypeTest, ContentEqualsOnEmpty) {
 	ASSERT_EQ(this->x, this->y);
