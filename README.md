@@ -44,7 +44,7 @@ Now, I promise it's not too difficult to get gtest running on your personal mach
 I'll fill in better instructions for installation later, but for now I'm just going to give a quick overview.
 - You need cmake. You'll have to install it if you don't already have it.
 - Next, install the gtest source (for debain systems, **sudo apt-get install libgtest-dev** is the easiest way)
-- Now, you need to compile the source (in debain, it's in /usr/src/)
+- Now, you need to compile the source using cmake (in debain, it's in /usr/src/)
 - You can either compile the libraries per project (Google's recommended way),
 - or you can do what I did: compile the general version and move them into the libraries folder (in debain, /usr/lib/)
 
