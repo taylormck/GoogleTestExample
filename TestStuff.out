@@ -1,0 +1,57 @@
+Running main() from gtest_main.cc
+[==========] Running 8 tests from 5 test cases.
+[----------] Global test environment set-up.
+[----------] 2 tests from SampleTestCase
+[ RUN      ] SampleTestCase.SampleTest
+[       OK ] SampleTestCase.SampleTest (0 ms)
+[ RUN      ] SampleTestCase.AnotherTest
+[       OK ] SampleTestCase.AnotherTest (0 ms)
+[----------] 2 tests from SampleTestCase (0 ms total)
+
+[----------] 2 tests from OtherTestCase
+[ RUN      ] OtherTestCase.SampleTest
+[       OK ] OtherTestCase.SampleTest (0 ms)
+[ RUN      ] OtherTestCase.SampleTestFail
+TestStuff.c++:71: Failure
+Value of: 2
+Expected: 1
+[  FAILED  ] OtherTestCase.SampleTestFail (1 ms)
+[----------] 2 tests from OtherTestCase (1 ms total)
+
+[----------] 2 tests from VectorTest
+[ RUN      ] VectorTest.SampleVectorTest
+[       OK ] VectorTest.SampleVectorTest (0 ms)
+[ RUN      ] VectorTest.SecondVectorTest
+TestStuff.c++:164: Failure
+Value of: v.size()
+  Actual: 3
+Expected: 4
+Hi, I'm a custom failure message. I'll print to the console because this expect fails
+[  FAILED  ] VectorTest.SecondVectorTest (0 ms)
+[----------] 2 tests from VectorTest (0 ms total)
+
+[----------] 1 test from AssertionTypes
+[ RUN      ] AssertionTypes.ShowAssertionTypes
+TestStuff.c++:207: Failure
+The difference between 2.00001 and 2.000011 is 1.000000000139778e-06, which exceeds 0.0000001, where
+2.00001 evaluates to 2.0000100000000001,
+2.000011 evaluates to 2.0000110000000002, and
+0.0000001 evaluates to 9.9999999999999995e-08.
+These floats are not equal to the specified precision
+[  FAILED  ] AssertionTypes.ShowAssertionTypes (1 ms)
+[----------] 1 test from AssertionTypes (1 ms total)
+
+[----------] 1 test from ArrayEquals
+[ RUN      ] ArrayEquals.ArrayEqualsTest
+[       OK ] ArrayEquals.ArrayEqualsTest (0 ms)
+[----------] 1 test from ArrayEquals (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 8 tests from 5 test cases ran. (2 ms total)
+[  PASSED  ] 5 tests.
+[  FAILED  ] 3 tests, listed below:
+[  FAILED  ] OtherTestCase.SampleTestFail
+[  FAILED  ] VectorTest.SecondVectorTest
+[  FAILED  ] AssertionTypes.ShowAssertionTypes
+
+ 3 FAILED TESTS
