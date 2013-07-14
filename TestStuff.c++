@@ -248,7 +248,7 @@ TEST_F(ArrayEquals, ArrayEqualsTest) {
  // }
 
 /*
- * Remeber, this is just barely scratching the surface of what gtest can do.
+ * Remember, this is just barely scratching the surface of what gtest can do.
  *
  * If you want more, you can find some samples at
  * http://code.google.com/p/googletest/wiki/Samples
