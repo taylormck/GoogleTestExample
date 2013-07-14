@@ -225,7 +225,9 @@ TEST(AssertionTypes, ShowAssertionTypes) {
  */
 class ArrayEquals : public ::testing::Test {
 protected:
-	const int v[3] = {1, 2, 3};
+	const int v[3];
+	ArrayEquals():
+		v{1, 2, 3}{}
 };
 
 TEST_F(ArrayEquals, ArrayEqualsTest) {
