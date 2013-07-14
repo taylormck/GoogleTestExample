@@ -23,7 +23,7 @@ test: TestStuff
 #
 # You can write your own main if you want to, but make sure not to link libgtest_main.a
 # or you will have two main functions defined, which WILL cause compilation errors
-TestStuff:
+TestStuff: TestStuff.c++
 	g++ -pedantic -std=c++0x -Wall TestStuff.c++ -o TestStuff -lgtest -lgtest_main -pthread
 
 # This deletes the binary
