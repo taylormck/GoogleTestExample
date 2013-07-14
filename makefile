@@ -1,11 +1,17 @@
 # Makefile to demonstrate how to build gtest
 
+# Just type 'make test' without the quotes on the command line
+# if using an IDE, make sure change the build command (in the IDE) to 'make TestStuff'
 test: TestStuff
 	TestStuff
 
 # Important stuff here
 # Normally, you will want to compile the framework specifically for each project
 # but for here, we're just using the pre-compiled version already in /usr/lib/
+#
+# If you've installed gtest somewhere else, you need to make sure to include the
+# path using -I {path}
+# where {path} contains gtest/gtest.h
 #
 # -lgtest brings in most of what we need
 # -lpthread is the posix multithreaded library, and is required for gtest
@@ -16,6 +22,8 @@ test: TestStuff
 TestStuff:
 	g++ -pedantic -std=c++0x -Wall TestStuff.c++ -o TestStuff -lgtest -lgtest_main -pthread
 
+# This deletes the binary
+# If you've changed TestStuff.c++, you will need to run 'make clean'
+# ... or you can always delete the file manually... whatever works for you
 clean:
-	rm -rf *.o
 	rm -f TestStuff

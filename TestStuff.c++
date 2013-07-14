@@ -1,11 +1,18 @@
 // A unit test source that makes use of gtest
-#include <iostream>			// Required for output
+#include <iostream>			// ostream
 #include <vector>			// vector
 #include <algorithm>		// equal
 
 /*
  * This is the gtest header.
- * The usual installation is
+ * The usual installation is in /usr/include/
+ *
+ * It's already installed there on the CS machines,
+ * but if you've installed it elsewhere on your own,
+ * there's no need to change this line.
+ *
+ * You just need to make sure to include the folder where
+ * you put the gtest folder when compiling.
  */
 #include "gtest/gtest.h"
 
@@ -28,7 +35,7 @@ TEST(SampleTestCase, SampleTest) {
 
 /*
  * For convenience, tests are grouped up by Test Cases
- * The output will place a gap between Test Cases,
+ * The output will place a gap between Test cases,
  * making it easier to read.
  * 
  * This test will be grouped up with the previous test
@@ -66,23 +73,22 @@ TEST(OtherTestCase, SampleTestFail) {
 
 /*
  * Often times, when unit testing, we find that we repeat a lot of code
- * when setting up the tests.
+ * to set up the tests.
  * This is when Test Fixtures come to the rescue.
  * 
  * Text Fixtures are classes that extend the ::testing::Test class
  * defined in gtest/gtest.h.
  * They allow us to do a lot of the set up here.
- * Then, we can create the set up once, and reuse it in all of our tests.
+ * We can create the set up once, and reuse it in all of our tests.
  *
  * There are, however, a few rules.
  * First, this class MUST be defined BEFORE any of the tests that use it
- * Second, any test using this fixture MUST use the name TEST_F instead
- * TEST.
+ * Second, any test using this fixture MUST use the name TEST_F instead TEST.
  * Third, the test MUST use the name of this class as its Test Case name
  * 
  * Also worth remembering, each test using this fixture will get a fresh,
  * brand new instance of this class.
- * Changed made during one test WILL NOT affect future tests.
+ * Changes made during one test WILL NOT affect future tests.
  */
 class VectorTest : public ::testing::Test {
 protected:
@@ -120,6 +126,11 @@ protected:
 	 */
 };
 
+/*
+ * So now I'm creating a test that uses my fixture
+ * I HAVE to use TEST_F, and the test case name HAS to be the name
+ * of the fixture.
+ */
 TEST_F(VectorTest, SampleVectorTest) {
 	/*
 	 * Notice here that I didn't have to do anything special to get v,
@@ -134,7 +145,8 @@ TEST_F(VectorTest, SampleVectorTest) {
 	 * The expect macro is useful when we would like to check some value, but
 	 * don't necessarily need to stop the test if the value is wrong.
 	 * 
-	 * The test will still be reported a failure.
+	 * The test will be reported a failure if the expectation is not met, even
+	 * if it passes all the assertions.
 	 *
 	 * As a general rule of thumb, use assert when future code depends on the
 	 * value being correct, use except otherwise.
@@ -192,7 +204,7 @@ TEST(AssertionTypes, ShowAssertionTypes) {
 
 	// If you need more than that, use this macro, which lets you
 	// specify the precision you want
-	ASSERT_NEAR(2.00001, 2.000011, 0.0000001) << "These floats are not equal to the specified precision";
+	EXPECT_NEAR(2.00001, 2.000011, 0.0000001) << "These floats are not equal to the specified precision";
 
 	/*
 	 * About strings...
