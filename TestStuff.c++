@@ -97,7 +97,7 @@ protected:
 	/*
 	 * This function will be called at the beginning of every
 	 * test involving this fixture, like a constructor.
-	 * 
+	 *
 	 * Do note that this is NOT a constructor, and an actual constructor
 	 * may be used as well.
 	 *
@@ -112,7 +112,7 @@ protected:
 	/*
 	 * This function will be called at the end of every test
 	 * involving this fixture, like a destructor.
-	 * 
+	 *
 	 * Again, this is not a real destructor, and you're not required to define it
 	 */
 	virtual void TearDown() {
@@ -226,8 +226,7 @@ TEST(AssertionTypes, ShowAssertionTypes) {
 class ArrayEquals : public ::testing::Test {
 protected:
 	const int v[3];
-	ArrayEquals():
-		v{1, 2, 3}{}
+	ArrayEquals(): v{1, 2, 3}{}
 };
 
 TEST_F(ArrayEquals, ArrayEqualsTest) {
