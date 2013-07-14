@@ -192,8 +192,8 @@ TEST(AssertionTypes, ShowAssertionTypes) {
 
 	/*
 	 * Floating point number binary comparisons
-	 * I won't go into why you comparing floating point numbers more
-	 * difficult than really needs be.
+	 * I won't go into detail, but comparing floating point numbers isn't as
+	 * easy as other types.
 	 * No worries, we have some macros to make things easier
 	 */
 	ASSERT_FLOAT_EQ(2.0, 2.0);
