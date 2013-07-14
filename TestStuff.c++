@@ -280,7 +280,7 @@ TYPED_TEST_CASE(TypeTest, MyTypes);
  * Unlike earlier, we need to use the keyword 'this' to get at the members
  * of our fixture.
  */
-TYPED_TEST(TypeTest, ContentEqualsOnEmpty) {
+TYPED_TEST(TypeTest, TemplateTypeEquals) {
 	ASSERT_EQ(this->x, this->y);
 }
 

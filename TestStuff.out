@@ -1,5 +1,5 @@
 Running main() from gtest_main.cc
-[==========] Running 8 tests from 5 test cases.
+[==========] Running 10 tests from 7 test cases.
 [----------] Global test environment set-up.
 [----------] 2 tests from SampleTestCase
 [ RUN      ] SampleTestCase.SampleTest
@@ -15,8 +15,8 @@ Running main() from gtest_main.cc
 TestStuff.c++:71: Failure
 Value of: 2
 Expected: 1
-[  FAILED  ] OtherTestCase.SampleTestFail (1 ms)
-[----------] 2 tests from OtherTestCase (1 ms total)
+[  FAILED  ] OtherTestCase.SampleTestFail (0 ms)
+[----------] 2 tests from OtherTestCase (0 ms total)
 
 [----------] 2 tests from VectorTest
 [ RUN      ] VectorTest.SampleVectorTest
@@ -46,9 +46,19 @@ These floats are not equal to the specified precision
 [       OK ] ArrayEquals.ArrayEqualsTest (0 ms)
 [----------] 1 test from ArrayEquals (0 ms total)
 
+[----------] 1 test from TypeTest/0, where TypeParam = int
+[ RUN      ] TypeTest/0.TemplateTypeEquals
+[       OK ] TypeTest/0.TemplateTypeEquals (0 ms)
+[----------] 1 test from TypeTest/0 (0 ms total)
+
+[----------] 1 test from TypeTest/1, where TypeParam = char
+[ RUN      ] TypeTest/1.TemplateTypeEquals
+[       OK ] TypeTest/1.TemplateTypeEquals (0 ms)
+[----------] 1 test from TypeTest/1 (0 ms total)
+
 [----------] Global test environment tear-down
-[==========] 8 tests from 5 test cases ran. (2 ms total)
-[  PASSED  ] 5 tests.
+[==========] 10 tests from 7 test cases ran. (1 ms total)
+[  PASSED  ] 7 tests.
 [  FAILED  ] 3 tests, listed below:
 [  FAILED  ] OtherTestCase.SampleTestFail
 [  FAILED  ] VectorTest.SecondVectorTest
