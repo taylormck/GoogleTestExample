@@ -1,5 +1,9 @@
 # Makefile to demonstrate how to build gtest
 
+# All target added for compatibility with IDE
+all:
+	make TestStuff
+	
 # Just type 'make test' without the quotes on the command line
 # if using an IDE, make sure change the build command (in the IDE) to 'make TestStuff'
 test: TestStuff

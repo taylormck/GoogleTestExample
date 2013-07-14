@@ -14,3 +14,8 @@
 
 # Binaries
 TestStuff
+
+# Eclipse settings
+.settings
+.project
+.cproject
