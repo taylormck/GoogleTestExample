@@ -31,6 +31,7 @@ and you need to link the libraries libgtest.a and libpthread.a when compiling.
 Linking libgtest_main.a is also recommended.
 Just add -lgtest -lpthread -lgtest_main to the compile command.
 It should look something like
+
     g++ {options} {TestSource} -o {TestProgram} -lgtest -lpthread -lgtest_main
 
 Take a look at my [makefile](https://github.com/taylormck/gTestExample/blob/master/makefile)
