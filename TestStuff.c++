@@ -90,7 +90,7 @@ TEST(OtherTestCase, SampleTestFail) {
  * brand new instance of this class.
  * Changes made during one test WILL NOT affect future tests.
  */
-class VectorTest : public ::testing::Test {
+class VectorTest : public testing::Test {
 protected:
 	std::vector<int> v;
 
@@ -223,7 +223,7 @@ TEST(AssertionTypes, ShowAssertionTypes) {
  * Google C++ Unit Testing Framework)
  * We can just rely on fixtures and std::equal
  */
-class ArrayEquals : public ::testing::Test {
+class ArrayEquals : public testing::Test {
 protected:
 	const int v[3];
 	ArrayEquals(): v{1, 2, 3}{}
@@ -233,6 +233,58 @@ TEST_F(ArrayEquals, ArrayEqualsTest) {
 	const int w[3] = {1, 2, 3};
 	ASSERT_TRUE(std::equal(w, w + 3, v));
 }
+
+/*
+ * Sometimes, we'll be building one or more classes that will use the same
+ * interface. Other times, we'll be building a class to
+ * ... hint hint... replicate the interface of another class
+ *
+ * Using Typed Tests, we can run the same tests on multiple types without
+ * rewriting the code.  This can be handy for making sure all of our classes
+ * work. Or, we can run tests with the class we're trying to emulate, so we
+ * can be confident in our tests when we run them on our own class.
+ *
+ * First, you need to create a templated type fixture.
+ * Create it just like any other type fixture. Give it a name, extend
+ * testing::Test, and make its members protected or public.
+ */
+template <typename T>
+class TypeTest : public testing::Test {
+	protected:
+		T x;
+		T y;
+
+		TypeTest(): x(0), y(0){}
+};
+
+/*
+ * Next, we need to get our types together.
+ * gtest has defined a templated Types class we can make use of.
+ *
+ * create a quick typedef, using ::testing::Types and put all the types you
+ * need to test in the template, then give this templated type a name.
+ */
+typedef testing::Types<int, char> MyTypes;
+
+/*
+ * Next, we create a Typed Test Case, which will run the corresponding
+ * Typed Tests on all the types specified. Pass it the name of the fixture
+ * you created, then the name of the templated Types type you created.
+ */
+TYPED_TEST_CASE(TypeTest, MyTypes);
+
+/*
+ * Now create a TYPED_TEST using the name of the fixture/typed test case,
+ * and give it a name.
+ *
+ * Unlike earlier, we need to use the keyword 'this' to get at the members
+ * of our fixture. It's a bit of a hassle, but there are limitations on
+ * what C++ macros and templates can do.
+ */
+TYPED_TEST(TypeTest, ContentEqualsOnEmpty) {
+	ASSERT_EQ(this->x, this->y);
+}
+
 
 /*
  * If you want, you can totally write your own main.
