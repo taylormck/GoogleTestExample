@@ -2,10 +2,15 @@
 #include <iostream>			// Required for output
 #include <vector>			// vector
 #include <algorithm>		// equal
-#include "gtest/gtest.h"	// gtest framework
 
 /*
- * Here's where we have stuff that's important to note
+ * This is the gtest header.
+ * The usual installation is
+ */
+#include "gtest/gtest.h"
+
+/*
+ * Here's the good stuff
  * The TEST( ... ) { ... } is a macro
  * It's defined in gtest/gtest.h, and we're using it here
  * to create a test for us.
@@ -13,9 +18,12 @@
  * The first argument is the name of the test case.
  * This is used for grouping tests together.
  * The second name is the name of the test itself
+ * ASSERT_EQ is a macro, that will test for equality between
+ * two non-float types
  */
 TEST(SampleTestCase, SampleTest) {
 	ASSERT_EQ(1, 1);
+	ASSERT_EQ('a', 'a');
 }
 
 /*
@@ -212,3 +220,27 @@ TEST_F(ArrayEquals, ArrayEqualsTest) {
 	const int w[3] = {1, 2, 3};
 	ASSERT_TRUE(std::equal(w, w + 3, v));
 }
+
+/*
+ * If you want, you can totally write your own main.
+ * I chose not to, and instead linked the compiler to libgtest_main.a,
+ * which contains a boilerplate main.
+ * Remember, you can't have BOTH, it's only one or the other.
+ *
+ * Anyways, here's what it would look like.
+ */
+ // int main(int argc, char **argv) {
+ // 	::testing::InitGoogleTest(&argc, argv);
+ // 	return RUN_ALL_TEST();
+ // }
+
+/*
+ * Remeber, this is just barely scratching the surface of what gtest can do.
+ *
+ * If you want more, you can find some samples at
+ * http://code.google.com/p/googletest/wiki/Samples
+ *
+ * You can also find read advanced tutorials,
+ * which will show you a lot of features I've left out at
+ * http://code.google.com/p/googletest/wiki/AdvancedGuide
+ */
