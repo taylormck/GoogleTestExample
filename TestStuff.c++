@@ -149,7 +149,7 @@ TEST_F(VectorTest, SampleVectorTest) {
 	 * if it passes all the assertions.
 	 *
 	 * As a general rule of thumb, use assert when future code depends on the
-	 * value being correct, use except otherwise.
+	 * value being correct, use expect otherwise.
 	 */
 	EXPECT_EQ(0, v[0]);
 	EXPECT_EQ(1, v[1]);
