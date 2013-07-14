@@ -1,7 +1,7 @@
 // A unit test source that makes use of gtest
-#include <iostream>			// ostream
-#include <vector>			// vector
-#include <algorithm>		// equal
+#include <iostream>         // ostream
+#include <vector>           // vector
+#include <algorithm>        // equal
 
 /*
  * This is the gtest header.
@@ -162,7 +162,7 @@ TEST_F(VectorTest, SampleVectorTest) {
  */
 TEST_F(VectorTest, SecondVectorTest) {
 	EXPECT_EQ(4, v.size()) << "Hi, I'm a custom failure message."
-						   << " I'll print to the console because this expect fails";
+                           << " I'll print to the console because this expect fails";
 
 	ASSERT_EQ(3, v.size()) << "Assertions can have custom messages, too, but this won't fail.";
 }
