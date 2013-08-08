@@ -251,6 +251,8 @@ TEST_F(ArrayEquals, ArrayEqualsTest) {
 template <typename T>
 class TypeTest : public testing::Test {
 	protected:
+		typedef int value_type;
+	
 		T x;
 		T y;
 
@@ -284,6 +286,23 @@ TYPED_TEST(TypeTest, TemplateTypeEquals) {
 	ASSERT_EQ(this->x, this->y);
 }
 
+/*
+ * Unfortunately, macros can't be templated, so getting the types from
+ * test fixture can be tricky
+ */
+TYPED_TEST(TypeTest, TemplateValueType) {
+	/*
+	 * In order to use types that we've defined in the Test Fixture,
+	 * we'll need to do use the current Test Fixture's type
+	 */
+	 typename TestFixture::value_type v;
+	 
+	 /*
+	  * To make things easier, we can just typedef it in the
+	  * current test
+	  */
+	  typedef typename TestFixture::value_type v;
+}
 
 /*
  * If you want, you can totally write your own main.
