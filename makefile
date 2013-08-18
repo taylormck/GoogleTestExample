@@ -27,7 +27,8 @@ TestStuff: TestStuff.c++
 	g++ -pedantic -std=c++0x -Wall TestStuff.c++ -o TestStuff -lgtest -lgtest_main -pthread
 
 # This deletes the binary
-# If you've changed TestStuff.c++, you will need to run 'make clean'
-# ... or you can always delete the file manually... whatever works for you
+# Were there other files I don't need, they could be listed here, too.
+# The name clean is pretty common for this command, and many IDE's will attempt to do
+# a make clean when asked to clean the project folder
 clean:
 	rm -f TestStuff
