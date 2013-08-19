@@ -5,7 +5,7 @@ A demonstration of how to use the Google C++ Testing Framework
 
 Introduction
 ------------
-Hi, I'm Taylor, and I'm a former student of Professor [Glenn Downing](https://www.cs.utexas.edu/users/downing/drupal/).
+Hi, I'm Taylor, and I'm a former student of [Professor Glenn Downing](https://www.cs.utexas.edu/users/downing/drupal/).
 I've been asked to write a quick tutorial for the Google C++ Testing Framework.
 Called gtest for short, this framework is a friendlier and more up to date unit testing framework for C++ than CppUnit.
 Some of the reasons I prefer gtest to Cppunit are:
@@ -18,13 +18,14 @@ Some of the reasons I prefer gtest to Cppunit are:
 - A few helpful macros allow us to test for complex equality between floating point numbers and c strings
 - Reports the time used during each test
 - Unlike CppUnit, I've been able to get this working on Windows
+- Since it prints the name of tests both before and after running, tracking down segmentation faults is much easier.
 
 How to use gtest on the CS machines
 -----------------------------------
 Gtest is already installed on the public UTCS machines, and will run without any trouble.
 Now, technically speaking, a custom version *should* be compiled for each project,
-as certain compilation options can give redefinition problems,
-but for everything within the scope of this class, the precompiled binaries should work.
+as certain compilation options can give redefinition errors,
+but for everything within the scope of Professor Downing's classes, the precompiled binaries should work.
 
 In order to use gtest, you need to import "gtest/gtest.h" into the test source file,
 and you need to link the libraries libgtest.a and libpthread.a when compiling.
@@ -35,7 +36,8 @@ It should look something like
     g++ {options} {TestSource} -o {TestProgram} -lgtest -lpthread -lgtest_main
 
 Take a look at my [makefile](https://github.com/taylormck/GoogleTestExample/blob/master/makefile)
-and [TestStuff.c++](https://github.com/taylormck/GoogleTestExample/blob/master/TestStuff.c%2B%2B) if it's giving you trouble.
+and [TestStuff.c++](https://github.com/taylormck/GoogleTestExample/blob/master/TestStuff.c%2B%2B)
+if it's giving you trouble.
 
 How to use gtest on your own machine
 ------------------------------------
@@ -48,7 +50,8 @@ I'll fill in better instructions for installation later, but for now I'm just go
 - You can either compile the libraries per project (Google's recommended way),
 - or you can do what I did: compile the general version and move them into the libraries folder (in debain, /usr/lib/)
 
-If you choose to install the gtest/gtest.h header somewhere out of the standard compilation path, you **must** include it when compiling.
+If you choose to install the gtest/gtest.h header somewhere out of the standard compilation path,
+you **must** include it when compiling.
 
 If you're lost, take a look at my [makefile](https://github.com/taylormck/GoogleTestExample/blob/master/makefile)
 and [TestStuff.c++](https://github.com/taylormck/GoogleTestExample/blob/master/TestStuff.c%2B%2B).
@@ -66,5 +69,5 @@ If you choose to write your own main (it isn't necessary), remember **not** to l
 Running gtest
 -------------
 Compile your test program and run it like normal.
-In this exapmle, it's as simple as 'make test'.
+In this example, it's as simple as 'make test'.
 Of course, you can set up your tests and makefile to your liking.
